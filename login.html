@@ -1,0 +1,60 @@
+{% extends 'sample1.html' %}
+{% block Content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin-top: 20px;
+            padding: 0;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-image:url("https://img.freepik.com/free-vector/flat-design-travel-background_23-2149193475.jpg?w=2000")
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form{
+           margin-top:2em;
+            margin-left:5em;
+            margin-right:30em;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 5px 5px 4px 5px lightskyblue;
+        }
+        .container{
+            margin-top:5em;
+            background-color: color:lightskyblue;
+        }        
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1 style="color:red">Login</h1>
+    <form method="POST">     
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">User_name/User_id</label>
+            <input type="text" placeholder="User_name/User_id" class="form-control" id="exampleInputName" name="user_name" required>
+        </div> 
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+    </div>
+    <input type="submit" class="btn btn-primary" name="Login">
+    {% if error %}
+    <p class="error-message" style=" color:red">{{ error }}</p>
+  {% endif %}
+    <p style="text-align:center">New User?<br>Create Account <a href="/register">Signup</a></p>
+    </form>
+    </div>
+</body>
+</html>
+{%endblock%}
