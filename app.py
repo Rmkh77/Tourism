@@ -9,8 +9,8 @@ from flask import flash
 app = Flask(__name__)
 
 # Load the cluster data from the pickle file
-df = pd.read_pickle('C:\\Users\\hithardha\\Desktop\\mini_project\\code\\python_mp\\final.pkl')
-df1= pd.read_pickle('C:\\Users\\hithardha\\Desktop\\mini_project\\code\\python_mp\\final_description.pkl')
+df = pd.read_pickle('pickle_file.pkl')
+df1= pd.read_pickle('pickle_description.pkl')
 pl1=df1['Place']
 ds1=df1['Description']
 locc = df['location']
