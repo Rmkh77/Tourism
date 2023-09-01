@@ -8,29 +8,6 @@ from flask import flash
 
 app = Flask(__name__)
 
-# Load the cluster data from the pickle file
-df = pd.read_pickle('pickle_file.pkl')
-df1= pd.read_pickle('pickle_description.pkl')
-pl1=df1['Place']
-ds1=df1['Description']
-locc = df['location']
-cat=df['category']
-placc = df['places']
-img_1=df['img_1']
-img_2=df['img_2']
-img_3=df['img_3']
-cluster_data = df.set_index('location')['loc_clu'].to_dict()
-
-openai.api_key = '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'
-
-engine = pyttsx3.init()
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/hithardha/Desktop/mini_project/code/python_mp/users.db'
-# Creating a database file named 'users.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = 'Hithardha77@'
-db = SQLAlchemy(app)
-# Define the User model for the database
 class User_data(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -61,7 +38,6 @@ def lock():
 #fetching images from google
 def get_google_image_urls(name):
     image_urls = []
-    gis = GoogleImagesSearch('AIzaSyCPIcb47X2ggJIMkrUDVQX40IcQOcQOJPM', 'e535d54f7cb0949dd')
     _search_params = {
         'q': name,
         'num': 3,  
@@ -253,14 +229,6 @@ def register():
 def logout():
     session.clear()
     return redirect(url_for('login'))
-
-@app.route('/speak', methods=['POST'])
-def speak_text():
-    data = request.get_json()
-    text = data['text']
-    engine.say(text)
-    engine.runAndWait()
-    return jsonify({'message': 'Text spoken successfully'})
 
 if __name__ == '__main__':
     with app.app_context():
